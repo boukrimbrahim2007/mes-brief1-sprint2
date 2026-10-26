@@ -47,13 +47,12 @@ function aficher(){
     li.appendChild(div)
     li.appendChild(button)
     ul.appendChild(li)
-    
-    button.addEventListener("click",(e)=>{
-      let holder=i
-      suprimer(holder)
-      aficher()
-    }
-    )
+
+      button.removeEventListener("click",ajouter)
+      button.addEventListener("click",()=>{
+      suprimer(produits[i].id)
+    })
+  
   }
   if(produits.length!==0){
     const vide=document.querySelector('#etat-vide')
@@ -62,8 +61,18 @@ function aficher(){
 }
 aficher()
 
-
-function suprimer(holder){
-      const comf=confirm("do u want ")
-      if(comf){ produits.splice(holder,1)
-}}
+function ser(id){
+  for(let j=0;j<produits.length;j++){
+    if(produits[j].id==id){
+      return j
+    }
+  }
+  return -1
+}
+function suprimer(id){
+  const comf=confirm("Voulez-vous retirer ce produit ?")
+  if(comf){
+    produits.splice(ser(id),1)
+    aficher()
+  }
+}
