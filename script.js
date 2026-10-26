@@ -22,4 +22,6 @@ function ajouter(){
       obj.prix=price.value
       obj.id=produits.length
       produits.push(obj)
+      price.value=""
+      nom.value=""
 }
