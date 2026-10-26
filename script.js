@@ -25,3 +25,32 @@ function ajouter(){
       price.value=""
       nom.value=""
 }
+
+
+function aficher(){
+  for(let i = 0;i<produits.length;i++){
+    const ul=document.querySelector("#liste-produits")
+    const li=document.createElement('li')
+    li.classList.add("produit")
+    const div=document.createElement('div')
+    const strong=document.createElement('strong')
+    strong.classList.add("nom-produit")
+    strong.textContent=produits[i].nom
+    const span=document.createElement('span')
+    span.classList.add("prix-produit")
+    span.textContent=produits[i].prix+" MAD"
+    div.appendChild(strong)
+    div.appendChild(span)
+    const button=document.createElement('button')
+    button.classList.add("supprimer")
+    button.textContent="retierer"
+    li.appendChild(div)
+    li.appendChild(button)
+    ul.appendChild(li)
+  }
+  if(produits.length!==0){
+    const vide=document.querySelector('#etat-vide')
+    vide.style.display="none"
+  }
+}
+aficher()
