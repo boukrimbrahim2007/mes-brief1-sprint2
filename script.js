@@ -10,3 +10,16 @@ let prochainId = 3;
 // 2. Gérer l’ajout depuis le formulaire.
 // 3. Gérer le retrait du produit cliqué.
 // 4. Bonus : compteur, état vide et total.
+
+const submit=document.querySelector("button")
+submit.addEventListener("click",ajouter)
+
+function ajouter(){
+  let obj={}
+      const nom=document.querySelector("#nom")
+      obj.nom=nom.value
+      const price=document.querySelector("#prix")
+      obj.prix=price.value
+      obj.id=produits.length
+      produits.push(obj)
+}
