@@ -12,10 +12,9 @@ let prochainId = 3;
 // 4. Bonus : compteur, état vide et total.
 
 const submit=document.querySelector("button")
-submit.addEventListener("click",ajouter)
-
-function ajouter(){
+submit.addEventListener("click",function ajouter(e){
   let obj={}
+      e.preventDefault()
       const nom=document.querySelector("#nom")
       obj.nom=nom.value
       const price=document.querySelector("#prix")
@@ -24,10 +23,14 @@ function ajouter(){
       produits.push(obj)
       price.value=""
       nom.value=""
-}
+      aficher()
+})
+
+
 
 
 function aficher(){
+
   for(let i = 0;i<produits.length;i++){
     const ul=document.querySelector("#liste-produits")
     const li=document.createElement('li')
@@ -48,9 +51,8 @@ function aficher(){
     li.appendChild(button)
     ul.appendChild(li)
 
-      button.removeEventListener("click",ajouter)
       button.addEventListener("click",()=>{
-      suprimer(produits[i].id)
+      suprimer(i)
     })
   
   }
@@ -69,10 +71,10 @@ function ser(id){
   }
   return -1
 }
-function suprimer(id){
+function suprimer(i){
   const comf=confirm("Voulez-vous retirer ce produit ?")
   if(comf){
-    produits.splice(ser(id),1)
+    produits.splice(i,1)
     aficher()
   }
 }
