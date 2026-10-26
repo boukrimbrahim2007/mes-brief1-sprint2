@@ -47,6 +47,13 @@ function aficher(){
     li.appendChild(div)
     li.appendChild(button)
     ul.appendChild(li)
+    
+    button.addEventListener("click",(e)=>{
+      let holder=i
+      suprimer(holder)
+      aficher()
+    }
+    )
   }
   if(produits.length!==0){
     const vide=document.querySelector('#etat-vide')
@@ -54,3 +61,9 @@ function aficher(){
   }
 }
 aficher()
+
+
+function suprimer(holder){
+      const comf=confirm("do u want ")
+      if(comf){ produits.splice(holder,1)
+}}
